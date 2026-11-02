@@ -1,0 +1,26 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{kt,kts}]
+max_line_length = 120
+# adapter.`in` 패키지는 Kotlin 예약어라 백틱이 필요하고, ktlint package-name 규칙이 이를 거부한다.
+ktlint_standard_package-name = disabled
+
+# 테스트 이름과 픽스처는 한국어를 쓴다. ktlint 네이밍 규칙은 한글 식별자를 막으므로 테스트에서만 끈다.
+[**/src/test/**/*.kt]
+ktlint_standard_class-naming = disabled
+ktlint_standard_function-naming = disabled
+ktlint_standard_property-naming = disabled
+
+[*.{yml,yaml,json,toml}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
