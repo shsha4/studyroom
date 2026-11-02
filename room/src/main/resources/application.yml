@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: room
+  threads:
+    virtual:
+      enabled: true

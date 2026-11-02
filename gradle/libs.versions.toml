@@ -1,0 +1,28 @@
+# 버전 숫자는 이 파일에만 적는다. 플랫폼에서 sparrow gradle/libs.versions.toml 이 맡는 자리고, 숫자도 그 파일에 맞춘다.
+[versions]
+# Boot 가 관리하는 Kotlin 과 같은 값이다. 플러그인 버전은 BOM 으로 못 주므로 이 값 하나로 플러그인과 라이브러리를 맞춘다.
+kotlin = "2.4.21"
+# JdbcClient 배치 쓰기가 든 Framework 7.1 의 짝이다. GA 전이라 sparrow 가 RC 를 쓰고, GA 가 나오면 숫자만 바꾼다.
+spring-boot = "4.2.0-RC1"
+spotless = "8.10.2"
+# Boot BOM 이 관리하지 않아 여기서 버전을 정한다.
+mockito-kotlin = "6.4.0"
+
+[libraries]
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+
+# 아래는 버전을 적지 않는다. 위 BOM 이 정한다.
+spring-boot-starter-webmvc = { module = "org.springframework.boot:spring-boot-starter-webmvc" }
+spring-boot-starter-webmvc-test = { module = "org.springframework.boot:spring-boot-starter-webmvc-test" }
+# Jackson 3 는 그룹이 tools.jackson 이다. com.fasterxml.jackson 은 Jackson 2 다.
+jackson-module-kotlin = { module = "tools.jackson.module:jackson-module-kotlin" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
