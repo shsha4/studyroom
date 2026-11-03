@@ -31,6 +31,13 @@ dependencies {
     implementation(platform(libs.kotlin.bom))
 
     implementation(libs.spring.boot.starter.webmvc)
+    implementation(libs.spring.boot.starter.validation)
+    implementation(libs.spring.boot.starter.data.jpa)
+    // 스키마는 Flyway 버전 스크립트로만 바꾼다. Hibernate 는 validate 로 맞는지만 본다.
+    implementation(libs.spring.boot.starter.flyway)
+    implementation(libs.flyway.mysql)
+    // 드라이버는 실행 때만 필요하다. 코드가 com.mysql 타입에 기대지 못하게 runtimeOnly 로 둔다.
+    runtimeOnly(libs.mysql.connector.j)
     // 스프링이 생성자 파라미터의 기본값과 널 여부를 읽는다.
     implementation(kotlin("reflect"))
     // Jackson 이 data class 생성자와 기본값, 널 여부를 읽는다.

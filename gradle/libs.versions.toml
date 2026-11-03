@@ -16,6 +16,15 @@ mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "
 # 아래는 버전을 적지 않는다. 위 BOM 이 정한다.
 spring-boot-starter-webmvc = { module = "org.springframework.boot:spring-boot-starter-webmvc" }
 spring-boot-starter-webmvc-test = { module = "org.springframework.boot:spring-boot-starter-webmvc-test" }
+# 요청 DTO 의 @Valid 형식 검증을 맡는다.
+spring-boot-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
+# JPA 와 함께 JDBC(JdbcClient)·Hikari 도 들어온다.
+spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+# Boot 4 는 자동 설정이 모듈로 나뉘어 flyway-core 만 넣으면 기동 때 마이그레이션이 돌지 않는다. 스타터로 넣는다.
+spring-boot-starter-flyway = { module = "org.springframework.boot:spring-boot-starter-flyway" }
+# Flyway 10 부터 MySQL 지원이 별도 모듈이다.
+flyway-mysql = { module = "org.flywaydb:flyway-mysql" }
+mysql-connector-j = { module = "com.mysql:mysql-connector-j" }
 # Jackson 3 는 그룹이 tools.jackson 이다. com.fasterxml.jackson 은 Jackson 2 다.
 jackson-module-kotlin = { module = "tools.jackson.module:jackson-module-kotlin" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }

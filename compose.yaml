@@ -1,0 +1,23 @@
+# 2단계 로컬 실행용 MySQL. 3단계에서 member·gateway·notifier·Kafka 를 이 파일에 더한다.
+services:
+  room-mysql:
+    # 이미지 태그는 Gradle 버전 카탈로그에 둘 수 없어 여기 적는다.
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: room
+      MYSQL_USER: room
+      # 로컬 더미값이다. 배포 환경 비밀값은 yml·compose 에 쓰지 않는다(컨벤션 01 「8. 설정」).
+      MYSQL_PASSWORD: room
+      MYSQL_ROOT_PASSWORD: root
+      # 관리형 DB 처럼 서버 타임존을 KST 로 고정한다(컨벤션 05 「3. 데이터 타입」).
+      TZ: Asia/Seoul
+    command:
+      - --default-time-zone=+09:00
+      # 락 대기 상한을 기본 50초보다 짧게 둔다(컨벤션 06 「5. 트랜잭션」). 값은 연습용 선택이다.
+      - --innodb-lock-wait-timeout=10
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroom", "-proom"]
+      interval: 5s
+      retries: 20

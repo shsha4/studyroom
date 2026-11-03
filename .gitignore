@@ -2,7 +2,8 @@
 build/
 .idea/
 *.iml
-out/
+# IntelliJ 빌드 출력은 루트 out/ 하나다. 앞에 / 가 없으면 adapter/out 패키지까지 무시된다.
+/out/
 .kotlin/
 local.properties
 .env
