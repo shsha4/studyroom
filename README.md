@@ -19,7 +19,7 @@
   - [컨벤션 04 「1. 빌드와 도구」](../onboarding/platform/convention/04_Kotlin-Code-Style.md), [spring/00](../onboarding/spring/00_Kotlin-Spring-Boot.md)
 - [x] **1. 도메인과 Kotlin**: 값 객체는 data class, 결과는 sealed, 프로퍼티는 `val`. 도메인은 Spring을 모른다
   - [컨벤션 04 「2. 널 안전성」「3. 데이터 타입과 불변성」](../onboarding/platform/convention/04_Kotlin-Code-Style.md), [kotlin/03 Data·Sealed·Object](../onboarding/kotlin/03_Data-Sealed-Object.md), [spring/06 「2. Domain은 Spring 없이 테스트한다」](../onboarding/spring/06_Test.md)
-- [ ] **2. room REST + JPA**: 기능 우선 패키지, DTO는 어댑터 소유, 엔티티는 일반 class, Flyway, `ddl-auto=validate`, `open-in-view=false`, 읽기는 `readOnly`
+- [x] **2. room REST + JPA**: 기능 우선 패키지, DTO는 어댑터 소유, 엔티티는 일반 class, Flyway, `ddl-auto=validate`, `open-in-view=false`, 읽기는 `readOnly`
   - [컨벤션 01 「2.」「3.」「4.」](../onboarding/platform/convention/01_Java-Architecture-Spring.md), [컨벤션 05](../onboarding/platform/convention/05_DB-Schema-Design.md), [spring/03 「1.」~「18.」「25.」](../onboarding/spring/03_JPA-and-Transaction.md), [spring/05](../onboarding/spring/05_Platform-Architecture.md)
 - [ ] **3. member gRPC**: 회원 상태를 포트 뒤에서 묻는다. Deadline은 반드시 걸고 재시도는 앱에서 하지 않는다. member가 답하지 못하면 예약(쓰기)은 막고 조회는 통과시킨다
   - [spring/04 「2.」~「12.」](../onboarding/spring/04_gRPC-and-Kafka.md), [컨벤션 01 「7. 외부 연동」](../onboarding/platform/convention/01_Java-Architecture-Spring.md), [crane 「2. 핵심 판단」 외부 판정이 안 될 때의 처리](../onboarding/platform/services/crane.md), [weaver 「2. 핵심 판단」 회원 신원 재조회](../onboarding/platform/services/weaver.md)
