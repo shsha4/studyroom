@@ -5,7 +5,7 @@ import java.util.UUID
 
 class Reservation(
     val id: UUID,
-    val roomId: UUID,
+    val roomId: Long,
     val memberId: UUID,
     val timeSlot: TimeSlot,
     status: ReservationStatus,
@@ -40,7 +40,7 @@ class Reservation(
     companion object {
         fun reserve(
             id: UUID,
-            roomId: UUID,
+            roomId: Long,
             memberId: UUID,
             timeSlot: TimeSlot,
         ): Reservation = Reservation(id, roomId, memberId, timeSlot, ReservationStatus.RESERVED, null)

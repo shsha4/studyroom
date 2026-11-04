@@ -39,7 +39,7 @@ class ReservationTest {
         assertThatThrownBy {
             Reservation(
                 UUID.randomUUID(),
-                UUID.randomUUID(),
+                1L,
                 UUID.randomUUID(),
                 slot(),
                 ReservationStatus.CANCELLED,
@@ -59,8 +59,7 @@ class ReservationTest {
         assertThat(reservation.cancelledAt).isEqualTo(now)
     }
 
-    private fun reserve(): Reservation =
-        Reservation.reserve(UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID(), slot())
+    private fun reserve(): Reservation = Reservation.reserve(UUID.randomUUID(), 1L, UUID.randomUUID(), slot())
 
     private fun slot(): TimeSlot =
         TimeSlot(Instant.parse("2026-11-03T10:00:00Z"), Instant.parse("2026-11-03T12:00:00Z"))
