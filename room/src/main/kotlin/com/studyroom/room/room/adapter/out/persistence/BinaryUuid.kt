@@ -11,8 +11,14 @@ object BinaryUuid {
         val buffer = ByteBuffer.wrap(bytes)
         return UUID(buffer.long, buffer.long)
     }
-
     // bytes:  [01 a1 a1 7e bc 80 7d 74][b0 dc 9e 4f 66 d1 33 44]
     //          └ 첫 번째 buffer.long ┘    └ 두 번째 buffer.long ┘
     //          = mostSigBits             = leastSigBits
+
+    fun toBytes(uuid: UUID): ByteArray =
+        ByteBuffer
+            .allocate(16)
+            .putLong(uuid.mostSignificantBits)
+            .putLong(uuid.leastSignificantBits)
+            .array()
 }
