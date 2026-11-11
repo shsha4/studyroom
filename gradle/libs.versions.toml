@@ -7,6 +7,12 @@ spring-boot = "4.2.0-RC1"
 spotless = "8.10.2"
 # Boot BOM 이 관리하지 않아 여기서 버전을 정한다.
 mockito-kotlin = "6.4.0"
+# protoc·grpc 코드 생성기는 BOM 으로 버전을 못 준다. 런타임과 어긋나지 않게 Boot 4.2.0-RC1 BOM 의
+# protobuf-java.version·grpc-java.version 과 같은 값을 적는다. Boot 를 올리면 BOM 을 보고 함께 바꾼다.
+protobuf = "4.36.2"
+grpc = "1.84.1"
+# proto → Java 스텁 생성 플러그인. parrot 이 쓰는 Gradle protobuf 플러그인이다(parrot 「2.」 스텁 생성).
+protobuf-plugin = "0.10.0"
 
 [libraries]
 spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
@@ -28,6 +34,10 @@ mysql-connector-j = { module = "com.mysql:mysql-connector-j" }
 # Jackson 3 는 그룹이 tools.jackson 이다. com.fasterxml.jackson 은 Jackson 2 다.
 jackson-module-kotlin = { module = "tools.jackson.module:jackson-module-kotlin" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+# 스텁 jar 가 싣는 런타임. 생성된 메시지 클래스는 protobuf-java, 서버 베이스·클라이언트 스텁은 grpc-stub 에 기댄다.
+protobuf-java = { module = "com.google.protobuf:protobuf-java" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf" }
+grpc-stub = { module = "io.grpc:grpc-stub" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -35,3 +45,4 @@ kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotl
 kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobuf-plugin" }

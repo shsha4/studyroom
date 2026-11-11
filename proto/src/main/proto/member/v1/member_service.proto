@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+// 패키지는 <도메인>.v1, 폴더도 같은 member/v1/ 에 둔다. 버전은 패키지로 가른다.
+package member.v1;
+
+// 생성 클래스를 메시지마다 파일 하나로 나눈다. 안 하면 전부 MemberServiceOuterClass 안의 중첩 클래스가 된다.
+option java_multiple_files = true;
+
+option java_package = "com.studyroom.contracts.member.v1";
+
+service MemberService {
+    rpc GetMemberStatus(GetMemberStatusRequest) returns (GetMemberStatusResponse);
+}
+
+message GetMemberStatusRequest {
+    // 사용자는 uid (UUID 문자열) 로 가리킨다. proto 에는 UUID 타입이 없어서 string 으로 지정
+    // 형식이 맞는지는 서버 gRPC 어댑터가 본다.
+    string uid = 1;
+}
+
+message GetMemberStatusResponse {
+    MemberStatus status = 1;
+}
+
+// 0번은 UNSPECIFIED 로 비워 둔다. proto3 는 값이 안 오면 0 으로 읽는다.
+enum MemberStatus {
+    MEMBER_STATUS_UNSPECIFIED = 0;
+    MEMBER_STATUS_ACTIVE = 1;
+    MEMBER_STATUS_SUSPENDED = 2;
+}

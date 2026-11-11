@@ -17,3 +17,5 @@ rootProject.name = "studyroom"
 
 // 서비스마다 별도 Spring Boot 앱이다. 3단계부터 member, gateway, notifier, proto 를 더한다.
 include("room")
+// 플랫폼의 parrot 자리. 앱이 아니라 계약 스텁 jar 다. 서비스끼리 공유하는 건 이 모듈뿐이다.
+include("proto")
