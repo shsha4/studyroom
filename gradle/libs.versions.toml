@@ -38,6 +38,10 @@ junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher
 protobuf-java = { module = "com.google.protobuf:protobuf-java" }
 grpc-protobuf = { module = "io.grpc:grpc-protobuf" }
 grpc-stub = { module = "io.grpc:grpc-stub" }
+# Boot 4.1 부터 Spring gRPC 자동 설정이 Boot 안으로 들어왔다. 서버는 Netty 로 따로 포트(기본 9090)를 연다.
+spring-boot-starter-grpc-server = { module = "org.springframework.boot:spring-boot-starter-grpc-server" }
+# 인프로세스 채널로 서버를 띄우는 슬라이스 테스트 지원(spring/06 「1.」 gRPC Adapter 행).
+spring-boot-starter-grpc-server-test = { module = "org.springframework.boot:spring-boot-starter-grpc-server-test" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

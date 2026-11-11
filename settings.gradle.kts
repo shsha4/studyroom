@@ -19,3 +19,5 @@ rootProject.name = "studyroom"
 include("room")
 // 플랫폼의 parrot 자리. 앱이 아니라 계약 스텁 jar 다. 서비스끼리 공유하는 건 이 모듈뿐이다.
 include("proto")
+// 플랫폼의 crane ResolveIdentity 자리. 회원 상태를 gRPC 로만 답하는 별도 앱이다.
+include("member")
